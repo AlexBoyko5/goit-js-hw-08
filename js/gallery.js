@@ -1,4 +1,6 @@
-const images = [
+const gallery = document.querySelector('gallery') // Знаходимо елемент галереї у HTML
+
+const images = [ // Додаєм масив об'єктів для зображень
     {
         preview:
             "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
@@ -63,3 +65,24 @@ const images = [
         description: "Lighthouse Coast Sea",
     },
 ];
+
+// Створення розмітки елемента галереї
+images.forEach((image) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('gallery-item');
+
+    const imageLink = document.createElement('a');
+    imageLink.classList.add('gallery-link');
+    imageLink.href = image.original;
+
+    const imageView = document.createElement('img');
+    imageView.classList.add('gallery-image');
+    imageView.src = image.preview;
+    imageView.alt = image.description;
+    imageView.setAttribute('data-source', image.original);
+
+    imageLink.appendChild(imageView);
+    listItem.appendChild(imageLink);
+
+    gallery.appendChild(listItem);
+});
