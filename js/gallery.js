@@ -86,3 +86,13 @@ images.forEach((image) => {
 
     gallery.appendChild(listItem);
 });
+
+// Додаємо обробник подій для відкриття модального вікна при кліку.галереї(ul.gallery)
+gallery.addEventListener('click', (event) => {
+    event.preventDefault();
+    const target = event.target;
+    if (target.node.Name === 'IMG') {
+        const largeImageUrl = gallery.getAttribute('data-source');
+        console.log('Посилання на велике зображення:', largeImageUrl);
+    }
+});
