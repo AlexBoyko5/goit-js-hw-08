@@ -1,4 +1,4 @@
-const gallery = document.querySelector('gallery') // Знаходимо елемент галереї у HTML
+const gallery = document.querySelector('.gallery') // Знаходимо елемент галереї у HTML
 
 const images = [ // Додаєм масив об'єктів для зображень
     {
@@ -92,7 +92,7 @@ gallery.addEventListener('click', (event) => {
     event.preventDefault();
     const target = event.target;
     if (target.node.Name === 'IMG') {
-        const largeImageUrl = gallery.getAttribute('data-source');
+        const largeImageUrl = target.getAttribute('data-source');
         console.log('Посилання на велике зображення:', largeImageUrl);
     }
 });
