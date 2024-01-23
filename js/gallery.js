@@ -91,8 +91,25 @@ images.forEach((image) => {
 gallery.addEventListener('click', (event) => {
     event.preventDefault();
     const target = event.target;
-    if (target.node.Name === 'IMG') {
-        const largeImageUrl = target.getAttribute('data-source');
-        console.log('Посилання на велике зображення:', largeImageUrl);
+
+    const largeImageUrl = target.getAttribute('data-source');
+    // console.log('Посилання на велике зображення:', largeImageUrl);
+
+    //Створюємо модальне вікно з великим зображенням
+    const modal = basicLightbox.create(`
+            <img src="${largeImageUrl}" alt="${target.alt}">
+        `);
+
+    modal.show();
+
+    //закриття модального вікна після натискання клавіші Escape
+    window.addEventListener('keydown', handleKeyDown);
+}
+);
+function handleKeyDown(event) {
+    if (event.code === 'Escape') {
+        modal.close();
+        window.removeEventListener('keydown', handleKeyDown)
     }
-});
+
+}

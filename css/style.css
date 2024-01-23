@@ -12,6 +12,10 @@ body {
 
 .gallery-item {
   margin: 5px;
+  width: 360px;
+  height: 200px;
+  padding: 24px 156px;
+  gap: 24px;
 }
 
 .gallery-link {
@@ -28,4 +32,27 @@ body {
 
 .gallery-image:hover {
   transform: scale(1.1);
+}
+
+.backdrop {
+  position: fixed;
+
+  width: 1440px;
+  height: 696px;
+  background: rgba(46, 47, 66, 0.80);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  width: 1112px;
+  height: 640px;
+  background: url(), lightgray -246.133px -4.929px / 127.08% 147.165% no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
