@@ -4,55 +4,31 @@ body {
 }
 
 .gallery {
-  list-style: none;
-  padding: 0;
   display: flex;
+  width: 1440px;
+  height: 696px;
+  padding: 24px 156px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  background: #fff;
 }
 
 .gallery-item {
-  margin: 5px;
-  width: 360px;
+  list-style-type: none;
+  width: calc((100% - 48) / 3);
   height: 200px;
-  padding: 24px 156px;
-  gap: 24px;
+  flex-shrink: 0;
 }
 
-.gallery-link {
-  text-decoration: none;
+.gallery-item:hover {
+  transform: scale(1.04);
 }
 
 .gallery-image {
-  width: 100%;
-  height: auto;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.gallery-image:hover {
-  transform: scale(1.1);
-}
-
-.backdrop {
-  position: fixed;
-
-  width: 1440px;
-  height: 696px;
-  background: rgba(46, 47, 66, 0.80);
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.modal {
-  width: 1112px;
-  height: 640px;
-  background: url(), lightgray -246.133px -4.929px / 127.08% 147.165% no-repeat;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 200px;
+  flex-shrink: 0;
+  background: url(<path-to-image>), lightgray 0px -30px / 100% 180% no-repeat;
 }

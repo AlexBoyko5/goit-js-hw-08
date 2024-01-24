@@ -1,6 +1,6 @@
-const gallery = document.querySelector('.gallery') // Знаходимо елемент галереї у HTML
+const gallery = document.querySelector('.gallery')
 
-const images = [ // Додаєм масив об'єктів для зображень
+const images = [
     {
         preview:
             "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
@@ -66,7 +66,7 @@ const images = [ // Додаєм масив об'єктів для зображ�
     },
 ];
 
-// Створення розмітки елемента галереї
+
 images.forEach((image) => {
     const listItem = document.createElement('li');
     listItem.classList.add('gallery-item');
@@ -87,29 +87,29 @@ images.forEach((image) => {
     gallery.appendChild(listItem);
 });
 
-// Додаємо обробник подій для відкриття модального вікна при кліку.галереї(ul.gallery)
+
 gallery.addEventListener('click', (event) => {
     event.preventDefault();
     const target = event.target;
+    if (target.tagName === 'IMG') {
+        const largeImageUrl = target.getAttribute('data-source');
 
-    const largeImageUrl = target.getAttribute('data-source');
-    // console.log('Посилання на велике зображення:', largeImageUrl);
 
-    //Створюємо модальне вікно з великим зображенням
-    const modal = basicLightbox.create(`
-            <img src="${largeImageUrl}" alt="${target.alt}">
+        const modal = basicLightbox.create(`
+            <img src="${largeImageUrl}" alt="${target.alt}" width="800" height="600">
         `);
 
-    modal.show();
+        modal.show();
 
-    //закриття модального вікна після натискання клавіші Escape
-    window.addEventListener('keydown', handleKeyDown);
-}
-);
-function handleKeyDown(event) {
-    if (event.code === 'Escape') {
-        modal.close();
-        window.removeEventListener('keydown', handleKeyDown)
+
+        window.addEventListener('keydown', handleKeyDown);
+
+
+        function handleKeyDown(event) {
+            if (event.code === 'Escape') {
+                modal.close();
+                window.removeEventListener('keydown', handleKeyDown)
+            }
+        }
     }
-
-}
+});
